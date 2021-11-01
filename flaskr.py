@@ -3,6 +3,7 @@ from flask import (
     Flask, request, session, g, redirect, url_for, abort,
     render_template, flash)
 from contextlib import closing
+import Weather
 
 # Configuration
 DATABASE = 'flaskr.db'
@@ -41,6 +42,18 @@ def show_entries():
     cur = g.db.execute('select title, text from entries order by id desc')
     entries = [dict(title=row[0], text=row[1]) for row in cur.fetchall()]
     return render_template('show_entries.html', entries=entries)
+
+@app.route('/weather', methods=['GET', 'POST'])
+def show_weather():
+    error = None
+    weather = None
+    if request.method == 'POST':
+        weather = Weather.getCurrentWeather(request.form['city_name'])
+        if not weather:
+            error = 'Invalid city name'
+    return render_template('weather.html', error=error, weather = weather)
+
+
 
 
 @app.route('/add', methods=['POST'])
