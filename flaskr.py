@@ -1,7 +1,7 @@
 import sqlite3
 from flask import (
     Flask, request, session, g, redirect, url_for, abort,
-    render_template, flash)
+    render_template, flash, jsonify)
 from contextlib import closing
 from weather import Weather
 
@@ -54,6 +54,11 @@ def show_weather():
     return render_template('weather.html', error=error, weather = weather)
 
 
+@app.route('/weather_forecast', methods=['GET'])
+def get_weather_forecast():
+    city = request.args.get('city')
+    weather = Weather().forecast(city)
+    return jsonify(weather)
 
 
 @app.route('/add', methods=['POST'])

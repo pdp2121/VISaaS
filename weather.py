@@ -9,7 +9,7 @@ class Weather(object):
         complete_url = self.base_url + "appid=" + self.api_key + "&q=" + city_name
         response = requests.get(complete_url)
         x = response.json()
-        if x["cod"] != "404":
+        if x["cod"] == "200":
             y = x["main"]
             ret = {}
             ret["current_temperature"] = y["temp"]
@@ -19,3 +19,13 @@ class Weather(object):
             return ret
         else:
             return None
+
+    def forecast(self, city_name):
+        complete_url = 'http://api.openweathermap.org/data/2.5/forecast?appid=' + self.api_key + "&q=" + city_name
+        response = requests.get(complete_url)
+        x = response.json()
+        print(x['cod'])
+        if x['cod'] == '200':
+            return x['list']
+        else:
+            return []
