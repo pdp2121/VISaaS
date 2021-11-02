@@ -2,7 +2,7 @@
 {% block body %}
   <h2>Weather Data</h2>
   {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
-  <form action="{{ url_for('weather') }}" method=post>
+  <form action="{{ url_for('show_weather') }}" method=post>
     <dl>
       <dt>Enter a City Name:
       <dd><input type=text name=cityname>
