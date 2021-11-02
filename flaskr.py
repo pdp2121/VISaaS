@@ -48,7 +48,7 @@ def show_weather():
     error = None
     weather = None
     if request.method == 'POST':
-        weather = Weather.getCurrentWeather(request.form['city_name'])
+        weather = Weather().getCurrentWeather(request.form['city_name'])
         if not weather:
             error = 'Invalid city name'
     return render_template('weather.html', error=error, weather = weather)
