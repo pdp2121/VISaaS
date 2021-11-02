@@ -21,11 +21,13 @@ class Weather(object):
             return None
 
     def forecast(self, city_name):
-        complete_url = 'http://api.openweathermap.org/data/2.5/forecast?appid=' + self.api_key + "&q=" + city_name
+        complete_url = 'http://api.openweathermap.org/data/2.5/forecast?appid=' + self.api_key + "&q=" + city_name + '&units=metric'
         response = requests.get(complete_url)
         x = response.json()
-        print(x['cod'])
         if x['cod'] == '200':
-            return x['list']
+            l = x['list']
+            temp = [y['main']['temp'] for y in l]
+            time = [y['dt_txt'] for y in l]
+            return temp, time
         else:
-            return []
+            return None

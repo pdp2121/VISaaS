@@ -54,11 +54,18 @@ def show_weather():
     return render_template('weather.html', error=error, weather = weather)
 
 
-@app.route('/weather_forecast', methods=['GET'])
+@app.route('/weather_forecast', methods=['GET', 'POST'])
 def get_weather_forecast():
-    city = request.args.get('city')
-    weather = Weather().forecast(city)
-    return jsonify(weather)
+    error = None
+    forecast = None
+    city = None
+    times = None
+    if request.method == 'POST':
+        city = request.form['city_name']
+        forecast, times = Weather().forecast(city)
+        if not forecast:
+            error = 'Error fetching forecast'   
+    return render_template('forecast.html', error=error, forecast = forecast, city=city, times=times)
 
 
 @app.route('/add', methods=['POST'])
