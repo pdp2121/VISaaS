@@ -9,7 +9,7 @@ class Weather():
         complete_url = self.base_url + "&q=" + city_name + "&appid=" + self.api_key + "&q=" + city_name
         response = requests.get(complete_url)
         x = response.json()
-        if x["cod"] == "200":
+        if x["cod"] != "404":
             y = x["main"]
             ret = {}
             ret["current_temperature"] = round(y["temp"] - 273.15, 2)
