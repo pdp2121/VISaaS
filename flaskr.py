@@ -1,9 +1,9 @@
 import sqlite3
 from flask import (
     Flask, request, session, g, redirect, url_for, abort,
-    render_template, flash)
+    render_template, flash, send_file)
 from contextlib import closing
-import Weather
+from weather import Weather
 
 # Configuration
 DATABASE = 'flaskr.db'
@@ -11,6 +11,7 @@ DEBUG = True
 SECRET_KEY = 'development key'
 USERNAME = 'admin'
 PASSWORD = 'default'
+DOWNLOAD_FOLDER = 'data/'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -48,10 +49,16 @@ def show_weather():
     error = None
     weather = None
     if request.method == 'POST':
-        weather = Weather.getCurrentWeather(request.form['city_name'])
+        w = Weather()
+        weather = w.getCurrentWeather(request.form['cityname'])
         if not weather:
             error = 'Invalid city name'
     return render_template('weather.html', error=error, weather = weather)
+
+@app.route('/downloadfiles/<filename>')
+def download_files(filename):
+    file_path = DOWNLOAD_FOLDER + filename
+    return send_file(file_path, as_attachment=True, attachment_filename='')
 
 
 

@@ -9,7 +9,6 @@
   {% else %}
     <a href="{{ url_for('logout') }}">log out</a>
   {% endif %}
-  <a href="{{ url_for('weather') }}">weather data</a>
   </div>
   {% for message in get_flashed_messages() %}
     <div class=flash>{{ message }}</div>
