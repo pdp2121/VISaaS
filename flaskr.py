@@ -60,6 +60,18 @@ def download_files(filename):
     file_path = DOWNLOAD_FOLDER + filename
     return send_file(file_path, as_attachment=True, attachment_filename='')
 
+@app.route('/weather_forecast', methods=['GET', 'POST'])
+def get_weather_forecast():
+    error = None
+    forecast = None
+    city = None
+    times = None
+    if request.method == 'POST':
+        city = request.form['city_name']
+        forecast, times = Weather().forecast(city)
+        if not forecast:
+            error = 'Error fetching forecast'   
+    return render_template('forecast.html', error=error, forecast = forecast, city=city, times=times)
 
 
 

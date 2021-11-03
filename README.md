@@ -9,6 +9,19 @@ and behave
 
 https://github.com/behave/behave
 
+## Running the server
 1. Create virtualenv
-2. pip install from requirements
-3. run behave
+2. Install requirements
+```
+pip3 install -r requirements.txt
+```
+3. Run server
+```
+python3 flaskr.py
+```
+
+## To Test
+Run behave
+```
+behave
+```

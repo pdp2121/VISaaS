@@ -2,6 +2,9 @@
 {% block body %}
   <ul class=entries>
   <li><h1>Sample Data</h1><h2>Weather Data</h2><a href="{{ url_for('show_weather') }}"> Try weather data!</a>
-  <li><h1>Plot Tools</h1></li>
+  <li>
+    <h1>Plot Tools</h1>
+    <a href="/weather_forecast"><h2>Try Weather Data Plotting</h2></a>
+  </li>
   </ul>
 {% endblock %}
