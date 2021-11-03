@@ -9,6 +9,7 @@
       <dd><input type=submit value=Submit>
     </dl>
   </form>
+  <a href="{{ url_for('show_entries') }}"> Back to Home Page</a>
   {% if forecast %}
   
   <p>Temperature Forecast for {{city}}</p>

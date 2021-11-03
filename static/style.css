@@ -8,6 +8,7 @@ h2              { font-size: 1.2em; }
                   padding: 0.8em; background: white; }
 .entries        { list-style: none; margin: 0; padding: 0; }
 .entries li     { margin: 0.8em 1.2em; }
+.entries li h2  { margin-top: 0.5em;}
 .entries li h1  { margin-bottom: 0.5em; }
 .add-entry      { font-size: 0.9em; border-bottom: 1px solid #ccc; }
 .add-entry dl   { font-weight: bold; }
@@ -21,11 +22,15 @@ h2              { font-size: 1.2em; }
     background-color: DodgerBlue;
     border: none;
     color: white;
-    padding: 12px 30px;
+    padding: 10px 20px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 12px;
   }
 
 .btn:hover {
     background-color: RoyalBlue;
+}
+
+.icon a {
+    text-decoration: none;
 }
