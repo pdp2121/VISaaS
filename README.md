@@ -3,7 +3,9 @@ ViSaaS
 Team members:
 
 Malcolm Mashig (mjm2396)
+
 Akshay Sharma (as6429)
+
 Phu Doan Pham (pdp2121)
 
 ## To run the app
