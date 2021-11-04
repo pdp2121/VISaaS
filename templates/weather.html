@@ -15,7 +15,7 @@
   <p>Current humidity: {{weather["current_humidity"]}}</p>
   <p>Description: {{weather["description"]}}</p>
   {% endif %}
-  <a href="/downloadfiles/current_weather.json" target="blank"><button class="btn"><i class="fa fa-download"></i> Download Data</button></a>
+  <a href="/downloadfiles/weather.json" target="blank"><button class="btn"><i class="fa fa-download"></i> Download Data</button></a>
 
   <a href="{{ url_for('show_entries') }}"> Back to Home Page</a>
 {% endblock %}

@@ -26,7 +26,7 @@ def show_weather():
     weather = None
     if request.method == 'POST':
         w = Weather()
-        weather = w.getCurrentWeather(request.form['cityname'])
+        weather = w.getCurrentWeather(request.form['filter'])
         if not weather:
             error = 'Invalid city name'
     return render_template('weather.html', error=error, weather = weather)
@@ -36,14 +36,14 @@ def download_files(filename):
     file_path = DOWNLOAD_FOLDER + filename
     return send_file(file_path, as_attachment=True, attachment_filename='')
 
-@app.route('/weather_forecast', methods=['GET', 'POST'])
+@app.route('/weather_visualization', methods=['GET', 'POST'])
 def get_weather_forecast():
     error = None
     forecast = None
     city = None
     times = None
     if request.method == 'POST':
-        city = request.form['city_name']
+        city = request.form['filter']
         forecast, times = Weather().forecast(city)
         if not forecast:
             error = 'Error fetching forecast'   

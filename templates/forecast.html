@@ -2,7 +2,7 @@
 {% block body %}
   <h2>Weather Forecast</h2>
   {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
-  <form action="/weather_forecast" method=post>
+  <form action="/weather_visualization" method=post>
     <dl>
       <dt>Enter a City Name:
       <dd><input type=text name=city_name>
