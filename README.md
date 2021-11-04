@@ -20,13 +20,19 @@ python3 app.py
 ```
 
 ## To Test
-Run behave
+Run behave to test user stories
 ```
 behave
 ```
+Run test coverage
+```
+coverage run -m unittest tests
+coverage report --omit=tests.py
+```
+
 
 ## Heroku Link
 https://stark-river-92141.herokuapp.com/
 
 ## GitHub Link
-https://github.com/pdp2121/VISaaS
+https://github.com/pdp2121/VISaaS (navigate to `proj-iter-1` branch)
