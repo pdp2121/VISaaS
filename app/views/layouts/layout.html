@@ -1,0 +1,14 @@
+<!doctype html>
+<title>ViSaaS</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+  <div class=icon>
+    <a href="{{ url_for('show_entries') }}"><h1>ViSaaS</h1></a>
+  </div>
+  <div class=metanav>
+  </div>
+  {% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+  {% endfor %}
+  {% block body %}{% endblock %}
+</div>
