@@ -1,0 +1,38 @@
+<h2>Weather Forecast</h2>
+{% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+<form action="/weather_visualization" method=post>
+  <dl>
+    <dt>Enter a City Name:
+    <dd><input type=text name=city_name>
+    <dd><input type=submit value=Submit>
+  </dl>
+</form>
+<a href="{{ url_for('show_entries') }}"> Back to Home Page</a>
+{% if forecast %}
+
+<p>Temperature Forecast for {{city}}</p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<canvas id="myChart" width="400" height="400"></canvas>
+
+<script>
+  var ctx = document.getElementById('myChart').getContext('2d');
+  const city = '{{city}}';
+  const times = '{{ times|join(",")|tojson }}'.split(',');
+  const temp = {{forecast}}
+  const data = {
+    labels: times,
+    datasets: [{
+      label: '*C',
+      data: temp,
+      fill: false,
+      borderColor: 'rgb(75, 192, 192)',
+      tension: 0.1
+    }]
+  };
+  let chart = new Chart(ctx, {
+    type: 'line',
+    data: data
+  })
+</script>
+{% endif %}

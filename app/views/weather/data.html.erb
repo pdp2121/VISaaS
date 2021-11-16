@@ -1,0 +1,18 @@
+<h2>Weather Data</h2>
+{% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+<form action="{{ url_for('show_weather') }}" method=post>
+  <dl>
+    <dt>Enter a City Name:
+    <dd><input type=text name=cityname>
+    <dd><input type=submit value=Submit>
+  </dl>
+</form>
+{% if weather %}
+<p>Current temperature: {{weather["current_temperature"]}}</p>
+<p>Current pressure: {{weather["current_pressure"]}}</p>
+<p>Current humidity: {{weather["current_humidity"]}}</p>
+<p>Description: {{weather["description"]}}</p>
+{% endif %}
+<a href="/downloadfiles/weather.json" target="blank"><button class="btn"><i class="fa fa-download"></i> Download Data</button></a>
+
+<a href="{{ url_for('show_entries') }}"> Back to Home Page</a>

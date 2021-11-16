@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'weather/data'
+  get 'weather/forecast'
   root "home#index"
 
   get '/index', to: "home#index"
