@@ -7,3 +7,7 @@
 ```
 bin/rails db:migrate RAILS_ENV=development
 ```
+
+
+## reference
+https://guides.rubyonrails.org/getting_started.html
