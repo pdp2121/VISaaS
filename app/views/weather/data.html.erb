@@ -1,6 +1,6 @@
 <h2>Weather Data</h2>
 <% if @error %>
-  <p class=error><strong>Error:</strong> @error
+  <p class=error><strong>Error:</strong> <%= @error %>
 <% end %>
 <form action="/weather/data" method=post>
   <dl>
@@ -10,11 +10,10 @@
   </dl>
 </form>
 <% if @weather != nil %>
-ansklaslka
-  <p>Current temperature: @weather["current_temperature"]</p>
-  <p>Current pressure: @weather["current_pressure"]</p>
-  <p>Current humidity: @weather["current_humidity"]</p>
-  <p>Description: @weather["description"]</p>
+  <p>Current temperature: <%= @weather["current_temperature"] %></p>
+  <p>Current pressure: <%= @weather["current_pressure"]%></p>
+  <p>Current humidity: <%= @weather["current_humidity"]%></p>
+  <p>Description: <%= @weather["description"]%></p>
 <% end %>
 <a href="/downloadfiles/weather.json" target="blank">
   <button class="btn">
