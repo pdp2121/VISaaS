@@ -14,9 +14,5 @@
   <p>Current pressure: <%= @weather["current_pressure"]%></p>
   <p>Current humidity: <%= @weather["current_humidity"]%></p>
   <p>Description: <%= @weather["description"]%></p>
+  <%= button_to "Acknowledged", { :controller => 'weather', :action => "data_download"}, :method => :post  %>
 <% end %>
-<a href="/downloadfiles/weather.json" target="blank">
-  <button class="btn">
-    <i class="fa fa-download"></i> Download Data
-  </button>
-</a>

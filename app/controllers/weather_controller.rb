@@ -6,9 +6,14 @@ class WeatherController < ApplicationController
   def data
     if request.post?
       cityname = request.POST['cityname']
-      @weather = get_current_weather(cityname)
-      if @weather == nil
+      if cityname == ''
         @error = 'invalid city name'
+      else
+        @weather = get_current_weather(cityname)
+        session[:weather] = @weather
+        if @weather == nil
+          @error = 'invalid city name'
+        end
       end
       # puts @weather != nil
     end
@@ -23,6 +28,12 @@ class WeatherController < ApplicationController
         @error = 'Error fetching forecast'
       end
     end
+  end
+  
+  def data_download
+    # puts session[:weather]
+    data = session[:weather].to_json
+    send_data data, :type => 'application/json; header=present', :disposition => "attachment; filename=data.json"
   end
 
   private
