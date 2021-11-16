@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'weather/data'
+  match 'weather/data' => 'weather#data', via: [:get, :post]
+  # post 'weather/data'
   get 'weather/forecast'
   root "home#index"
 
