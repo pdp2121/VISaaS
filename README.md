@@ -1,24 +1,9 @@
-# README
+# visaas
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## installation
+- get ruby 3.0.2 (can use https://rvm.io)
+- `bundle install` to get gems
+- might need to resolve pending migrations locally via
+```
+bin/rails db:migrate RAILS_ENV=development
+```
