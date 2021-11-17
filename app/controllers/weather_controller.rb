@@ -37,35 +37,31 @@ class WeatherController < ApplicationController
     send_data data, :type => 'application/json; header=present', :disposition => "attachment; filename=data.json"
   end
 
-  def import
-    rowarray = Array.new
-    myfile = params[:file]
-    data = []
-    CSV.foreach(myfile.path, headers: true) do |row|
-      data << row.to_hash
+  def upload
+    if params[:file] != nil
+      rowarray = Array.new
+      myfile = params[:file]
+      data = []
+      CSV.foreach(myfile.path, headers: true) do |row|
+        data << row.to_hash
+      end
+      # puts data
+
+      # reformatting data
+      @@imported_data = {}
+      data[0].keys.each{ |k| @@imported_data[k] = []}
+      data.each{ |x| 
+        x.each{ |k,v| 
+          @@imported_data[k] << v
+        }
+      }
+      
+      redirect_to '/plot'
     end
-    # puts data
-    return data
   end
 
-  # TODO: replace this mock function w/ uploaded data
-  N = 50
-  def mock
-    data = {}
-    data['a'] = Array.new(N) { rand }
-    srand rand(1000)
-    data['b'] = Array.new(N) { rand }
-    srand rand(1000)
-    data['c'] = Array.new(N) { rand }
-    srand rand(1000)
-    data['d'] = Array.new(N) { rand }
-    return data
-    # render json: data.to_json
-  end
-
-  def plot
-    data = mock()
-    # puts data
+  def plot(*args)
+    data = @@imported_data
 
     # get the keys
     @labels = data.keys

@@ -1,0 +1,10 @@
+<h2>Upload Data</h2>
+<h3>To create graph</h3>
+<% if @error %>
+  <p class=error><strong>Error:</strong> <%= @error %>
+<% end %>
+
+<%= form_tag({:action => :upload}, multipart: true) do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag( "Import" ) %>
+<% end %>
