@@ -36,6 +36,43 @@ class WeatherController < ApplicationController
     send_data data, :type => 'application/json; header=present', :disposition => "attachment; filename=data.json"
   end
 
+  # TODO: replace this mock function w/ uploaded data
+  N = 50
+  def mock
+    data = {}
+    data['a'] = Array.new(N) { rand }
+    srand rand(1000)
+    data['b'] = Array.new(N) { rand }
+    srand rand(1000)
+    data['c'] = Array.new(N) { rand }
+    srand rand(1000)
+    data['d'] = Array.new(N) { rand }
+    return data
+    # render json: data.to_json
+  end
+
+  def plot
+    data = mock()
+    # puts data
+
+    # get the keys
+    @labels = data.keys
+
+    if request.post?
+      # get selected columns
+      @col1 = request.POST['column1']
+      @col2 = request.POST['column2']
+
+      # convert to x,y format
+      data1 = data[@col1]
+      data2 = data[@col2]
+      joint = data1.zip(data2) 
+
+      @chart_data = joint.map{ |x,y| {'x': x, 'y': y}}.to_json
+      # puts @chart_data
+    end
+  end
+
   private
     @@api_key = "ade2a800bae9976517a8880b320bab8c"
     @@base_url = "http://api.openweathermap.org/data/2.5/weather?"

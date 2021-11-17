@@ -1,0 +1,69 @@
+<h2>Graph Your Data</h2>
+<% if @error %>
+  <p class=error><strong>Error:</strong> <%= @error %>
+<% end %>
+
+
+<form method='post' action='/plot'>
+  <label for="column1">Choose label 1:</label>
+  <select name="column1" id="column1">
+  <% @labels.each do |l| %>
+    <option value="<%= l %>"><%= l %></option>
+  <% end %>
+  </select>
+
+  <label for="column2">Choose label 2:</label>
+  <select name="column2" id="column2">
+  <% @labels.each do |l| %>
+    <option value="<%= l %>"><%= l %></option>
+  <% end %>
+  </select>
+
+  <input type='submit'>Create Chart</input>
+</form>
+
+<% if @chart_data %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <canvas id="myChart" width="400" height="400"></canvas>
+
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    const data = {
+      datasets: [{
+        label: 'Line Chart',
+        data: <%= @chart_data.html_safe %>,
+        pointRadius: 3,
+        pointHoverRadius: 5,
+        fill: false,
+        tension: 0,
+        showLine: false,
+        backgroundColor: 'rgb(255, 99, 132)'
+      }],
+    };
+
+    let chart = new Chart(ctx, {
+      type: 'scatter',
+      data: data,
+      options: {
+        scales: {
+          x: {
+            type: 'linear',
+            position: 'bottom'
+          },
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: '<%= @col1 %>'
+            }
+          }],
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: '<%= @col2 %>'
+            }
+          }]
+        }
+      }
+    })
+  </script>
+<% end %>
