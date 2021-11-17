@@ -1,4 +1,5 @@
 require 'net/http'
+require 'csv'
 
 class WeatherController < ApplicationController
   skip_before_action :verify_authenticity_token
@@ -34,6 +35,17 @@ class WeatherController < ApplicationController
     # puts session[:weather]
     data = session[:weather].to_json
     send_data data, :type => 'application/json; header=present', :disposition => "attachment; filename=data.json"
+  end
+
+  def import
+    rowarray = Array.new
+    myfile = params[:file]
+    data = []
+    CSV.foreach(myfile.path, headers: true) do |row|
+      data << row.to_hash
+    end
+    # puts data
+    return data
   end
 
   # TODO: replace this mock function w/ uploaded data
