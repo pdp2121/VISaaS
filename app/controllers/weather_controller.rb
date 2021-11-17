@@ -59,17 +59,37 @@ class WeatherController < ApplicationController
     @labels = data.keys
 
     if request.post?
-      # get selected columns
-      @col1 = request.POST['column1']
-      @col2 = request.POST['column2']
+      if request.POST["query"] != nil
+        # type 2 - where the user writes queries
+        query = request.POST["query"]
+        words = query.split
+        
+        # find common words b/t query and data columns
+        common_cols = words & @labels
 
-      # convert to x,y format
-      data1 = data[@col1]
-      data2 = data[@col2]
-      joint = data1.zip(data2) 
+        if common_cols.length < 2
+          @error = 'Could not find two data columns in your query'
+        else
+          @col1 = common_cols[0]
+          @col2 = common_cols[1]
+        end
+      else
+        # type 1 - where the user selects columns
 
-      @chart_data = joint.map{ |x,y| {'x': x, 'y': y}}.to_json
-      # puts @chart_data
+        # get selected columns
+        @col1 = request.POST['column1']
+        @col2 = request.POST['column2']
+      end
+
+      if !@error 
+        # convert to x,y format
+        data1 = data[@col1]
+        data2 = data[@col2]
+        joint = data1.zip(data2) 
+
+        @chart_data = joint.map{ |x,y| {'x': x, 'y': y}}.to_json
+        # puts @chart_data
+      end
     end
   end
 
