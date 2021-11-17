@@ -28,7 +28,7 @@ coverage report --omit=tests.py
 ```
 
 ## Heroku Link
-https://stark-river-92141.herokuapp.com/
+https://blooming-caverns-07190.herokuapp.com
 
 ## GitHub Link
 https://github.com/pdp2121/VISaaS (navigate to `proj-iter-1` branch)
