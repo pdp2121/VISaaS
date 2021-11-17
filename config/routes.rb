@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   match 'weather/data' => 'weather#data', via: [:get, :post]
   match 'weather/forecast' => 'weather#forecast', via: [:get, :post]
   post 'weather/data_download' => 'weather#data_download'
+  post 'weather/import' => 'weather#import'
 
   match '/plot' => 'weather#plot', via: [:get, :post]
 

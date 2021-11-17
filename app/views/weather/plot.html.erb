@@ -3,6 +3,10 @@
   <p class=error><strong>Error:</strong> <%= @error %>
 <% end %>
 
+<%= form_tag({:action => :import}, multipart: true) do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag( "Import" ) %>
+<% end %>
 
 <form method='post' action='/plot'>
   <label for="column1">Choose label 1:</label>
