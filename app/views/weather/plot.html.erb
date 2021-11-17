@@ -23,6 +23,7 @@
 </form>
 
 <% if @chart_data %>
+<div id="chart_div">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <canvas id="myChart" width="400" height="400"></canvas>
 
@@ -64,6 +65,38 @@
           }]
         }
       }
-    })
+    });
+  </script>
+</div>
+
+  <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+    <button onclick="myFunction()">Copy & Paste this code anywhere</button>
+    <textarea id="code_to_copy"  style="width:-webkit-fill-available" rows="20" ></textarea>
+  </div>
+
+  <script>
+    getCodeAsText()
+
+    function getCodeAsText(){
+      var element = document.getElementById('chart_div');
+      var codeAsText = element.innerHTML;
+      codeAsText = codeAsText.replace(';', ';\n');
+      document.getElementById('code_to_copy').value = codeAsText;
+    }
+
+    function myFunction() {
+      /* Get the text field */
+      var copyText = document.getElementById("code_to_copy");
+
+      /* Select the text field */
+      copyText.select(); 
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+      /* Copy the text inside the text field */
+      navigator.clipboard.writeText(copyText.value);
+
+      /* Alert the copied text */
+      alert("Copied code successfully!")
+    }
   </script>
 <% end %>
