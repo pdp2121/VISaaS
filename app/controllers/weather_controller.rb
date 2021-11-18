@@ -77,9 +77,18 @@ class WeatherController < ApplicationController
 
         if common_cols.length < 2
           @error = 'Could not find two data columns in your query'
-        else
+        end
+
+        common_types = words & ['line', 'scatter']
+
+        if common_cols.length < 1
+          @error = 'Could not find chart type in your query'
+        end
+
+        if !@error
           @col1 = common_cols[0]
           @col2 = common_cols[1]
+          @plot_type = common_types[0]
         end
       else
         # type 1 - where the user selects columns
@@ -87,15 +96,27 @@ class WeatherController < ApplicationController
         # get selected columns
         @col1 = request.POST['column1']
         @col2 = request.POST['column2']
+        @plot_type = request.POST['plot_type']
       end
 
       if !@error 
         # convert to x,y format
         data1 = data[@col1]
         data2 = data[@col2]
-        joint = data1.zip(data2) 
 
-        @chart_data = joint.map{ |x,y| {'x': x, 'y': y}}.to_json
+        if @plot_type == 'line'
+          data1 = data1.map(&:to_f)
+          data2 = data2.map(&:to_f)
+          @chart_data = {
+            @col1 => data1,
+            @col2 => data2,
+          }.to_json
+          n = data1.length
+          @chart_labels = (1..n).to_a
+        else        
+          joint = data1.zip(data2) 
+          @chart_data = joint.map{ |x,y| {'x': x, 'y': y}}.to_json
+        end
         # puts @chart_data
       end
     end

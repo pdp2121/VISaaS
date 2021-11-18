@@ -18,6 +18,12 @@
   <% end %>
   </select>
 
+  <label for="plot_type">Plot Type:</label>
+  <select name="plot_type" id="plot_type">
+    <option value="scatter">Scatter Plot</option>
+    <option value="line">Line Graph</option>
+  </select>
+
   <input type='submit' value="Create Chart" />
 </form>
 
@@ -33,46 +39,82 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <canvas id="myChart" width="400" height="400"></canvas>
 
-  <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    const data = {
-      datasets: [{
-        label: 'Line Chart',
-        data: <%= @chart_data.html_safe %>,
-        pointRadius: 3,
-        pointHoverRadius: 5,
-        fill: false,
-        tension: 0,
-        showLine: false,
-        backgroundColor: 'rgb(255, 99, 132)'
-      }],
-    };
+  <% if @plot_type == 'scatter' %>
+    <script>
+      var ctx = document.getElementById('myChart').getContext('2d');
 
-    let chart = new Chart(ctx, {
-      type: 'scatter',
-      data: data,
-      options: {
-        scales: {
-          x: {
-            type: 'linear',
-            position: 'bottom'
-          },
-          xAxes: [{
-            scaleLabel: {
-              display: true,
-              labelString: '<%= @col1 %>'
-            }
-          }],
-          yAxes: [{
-            scaleLabel: {
-              display: true,
-              labelString: '<%= @col2 %>'
-            }
-          }]
+      const data = {
+        datasets: [{
+          label: 'Scatter Plot',
+          data: <%= @chart_data.html_safe %>,
+          pointRadius: 3,
+          pointHoverRadius: 5,
+          fill: false,
+          tension: 0,
+          showLine: false,
+          backgroundColor: 'rgb(255, 99, 132)'
+        }],
+      };
+
+      let chart = new Chart(ctx, {
+        type: 'scatter',
+        data: data,
+        options: {
+          scales: {
+            x: {
+              type: 'linear',
+              position: 'bottom'
+            },
+            xAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: '<%= @col1 %>'
+              }
+            }],
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: '<%= @col2 %>'
+              }
+            }]
+          }
         }
-      }
-    });
-  </script>
+      });
+    </script>
+  <% end %>
+
+  <% if @plot_type == 'line' %>
+    <script>
+      var ctx = document.getElementById('myChart').getContext('2d');
+  
+      const data = {
+        labels: <%= @chart_labels %>,
+        datasets: [
+          <% JSON.parse(@chart_data).each do |k, v| %>
+            {
+              label: '<%= k %>', 
+              data: <%= v %>,
+              showLine: true,
+              borderColor: '<%= (k == @col1) ? 'blue' : 'red' %>'
+            },
+          <% end %>
+        ],
+      };
+  
+      let chart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+          }
+        }
+      });
+    </script>
+  <% end %>
 </div>
 
   <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
