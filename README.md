@@ -13,6 +13,7 @@ Phu Doan Pham (pdp2121)
 - Install Webpack: `bundle exec rake webpacker:install`
 - Install Postgres: `brew install postgresql`
 - Setup gems: `sudo bundle install`
+- Initialize database: `rake db:create`
 
 
 ## Running the app
