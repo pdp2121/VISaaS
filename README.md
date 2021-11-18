@@ -35,7 +35,7 @@ bundle exec rspec
 https://blooming-caverns-07190.herokuapp.com
 
 ## GitHub Link
-https://github.com/pdp2121/VISaaS
+https://github.com/pdp2121/VISaaS/tree/proj-iter-2
 
 ## Notes
 
