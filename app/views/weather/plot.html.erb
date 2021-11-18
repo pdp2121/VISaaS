@@ -24,14 +24,14 @@
     <option value="line">Line Graph</option>
   </select>
 
-  <input type='submit' value="Create Chart" />
+  <input type='submit' value="Create Chart from Labels" />
 </form>
 
 <div style="display:flex; justify-content: center; margin-top: 1rem">OR</div>
 
 <form method='post' action='/plot' style="display: flex; flex-direction: column">
   <input type="text" name="query" id="query" placeholder="Type your query: Scatter plot between column X and Y..."></input>
-  <input type='submit' value="Create Chart" />
+  <input type='submit' value="Create Chart from Query" />
 </form>
 
 <% if @chart_data %>
