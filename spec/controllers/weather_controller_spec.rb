@@ -18,6 +18,9 @@ if RUBY_VERSION>='2.6.0'
 end
 
 RSpec.describe WeatherController, type: :controller do
+  before :each do
+    @file = File.join(__dir__, "files/data.csv")
+  end
   describe "Getting Current Weather" do
     it "success case" do
       expect(WeatherController.new.get_current_weather('London')).to include("current_humidity")
@@ -37,22 +40,38 @@ RSpec.describe WeatherController, type: :controller do
       expect(WeatherController.new.get_forecast('random (not a city name)')).to eq(nil)
     end
   end
-  describe "Downloading Data" do
-    it "does not result in error" do
-      get :data_download
-      p response.headers
-    end
-  end
   describe "Uploading Data" do
-    it "is available" do
-      get :upload
-      p response.headers
+    it "success case" do 
+      expect(WeatherController.new.import(File.join(__dir__, "files/data.csv"))).to eq(
+        Array[{""=>"1", "temp"=>"80", "time"=>"1"}, {""=>"2", "temp"=>"70", "time"=>"2"}, 
+        {""=>"3", "temp"=>"75", "time"=>"3"}, {""=>"4", "temp"=>"65", "time"=>"4"}]
+      )
     end
   end
-  describe "Forecast" do
-    it "is available" do
-      get :forecast
-      p response.headers
+  describe "Filtering Data" do
+    it "failure case" do 
+      expect(WeatherController.new.filter_city("not a city name")).to eq(
+        "invalid city name"
+      )
+    end
+  end
+  describe "Filtering Forecast" do
+    it "success case" do 
+      expect(WeatherController.new.filter_forecast("London")).to include(
+        "2021"
+      )
+    end
+    it "failure case" do 
+      expect(WeatherController.new.filter_forecast("not a city name")).to eq(
+        "Error fetching forecast"
+      )
+    end
+  end
+  describe "Splitting Query" do
+    it "success case" do 
+      expect(WeatherController.new.split_query("Scatter plot of columns X and Y")).to include(
+        Array["Scatter", "plot", "of", "columns", "X", "and", "Y"]
+      )
     end
   end
 end

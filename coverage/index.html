@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-11-17T23:34:40-05:00">2021-11-17T23:34:40-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-11-18T22:47:53-05:00">2021-11-18T22:47:53-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  62.5%
+  70.59%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.58
+         2.43
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>144</b> relevant lines,
-    <span class="green"><b>90</b> lines covered</span> and
-    <span class="red"><b>54</b> lines missed. </span>
+    <b>153</b> relevant lines,
+    <span class="green"><b>108</b> lines covered</span> and
+    <span class="red"><b>45</b> lines missed. </span>
     (<span class="red">
-  62.5%
+  70.59%
 </span>
 )
   </div>
@@ -83,12 +83,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#548cea6bc3e6eae55c5e5636a97afac4e760c352" class="src_link" title="app/controllers/weather_controller.rb">app/controllers/weather_controller.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">43.75 %</td>
-            <td class="cell--number">167</td>
-            <td class="cell--number">96</td>
-            <td class="cell--number">42</td>
-            <td class="cell--number">54</td>
-            <td class="cell--number">1.85</td>
+            <td class="red strong cell--number t-file__coverage">57.14 %</td>
+            <td class="cell--number">184</td>
+            <td class="cell--number">105</td>
+            <td class="cell--number">60</td>
+            <td class="cell--number">45</td>
+            <td class="cell--number">3.08</td>
             
           </tr>
         
@@ -365,7 +365,7 @@
     <h3>app/controllers/weather_controller.rb</h3>
     <h4>
       <span class="red">
-  43.75%
+  57.14%
 </span>
 
       lines covered
@@ -374,9 +374,9 @@
     
 
     <div class="t-line-summary">
-      <b>96</b> relevant lines.
-      <span class="green"><b>42</b> lines covered</span> and
-      <span class="red"><b>54</b> lines missed.</span>
+      <b>105</b> relevant lines.
+      <span class="green"><b>60</b> lines covered</span> and
+      <span class="red"><b>45</b> lines missed.</span>
     </div>
 
     
@@ -492,18 +492,18 @@
 
             
 
-            <code class="ruby">      if cityname == &#39;&#39;</code>
+            <code class="ruby">      filter_city(cityname)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="11">
+          <li class="never" data-hits="" data-linenumber="11">
             
             
 
             
 
-            <code class="ruby">        @error = &#39;invalid city name&#39;</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -514,243 +514,12 @@
 
             
 
-            <code class="ruby">      else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="13">
-            
-            
-
-            
-
-            <code class="ruby">        @weather = get_current_weather(cityname)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="14">
-            
-            
-
-            
-
-            <code class="ruby">        session[:weather] = @weather</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="15">
-            
-            
-
-            
-
-            <code class="ruby">        if @weather == nil</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="16">
-            
-            
-
-            
-
-            <code class="ruby">          @error = &#39;invalid city name&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="17">
-            
-            
-
-            
-
-            <code class="ruby">        end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="18">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="19">
-            
-            
-
-            
-
-            <code class="ruby">      # puts @weather != nil</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="20">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="21">
-            
-            
-
-            
-
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="22">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="23">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def forecast</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="24">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    if request.post?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="25">
-            
-            
-
-            
-
-            <code class="ruby">      @city = request.POST[&#39;cityname&#39;]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="26">
-            
-            
-
-            
-
-            <code class="ruby">      @forecast, @times = get_forecast(@city)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="27">
-            
-            
-
-            
-
-            <code class="ruby">      if @forecast == nil</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="28">
-            
-            
-
-            
-
-            <code class="ruby">        @error = &#39;Error fetching forecast&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="29">
-            
-            
-
-            
-
-            <code class="ruby">      else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="30">
-            
-            
-
-            
-
-            <code class="ruby">        @times = @times.join(&#39;,&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="31">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="32">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="33">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="34">
+          <li class="never" data-hits="" data-linenumber="13">
             
             
 
@@ -761,150 +530,84 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="35">
+          <li class="covered" data-hits="1" data-linenumber="14">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def data_download</code>
+            <code class="ruby">  def filter_city(cityname)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="36">
-            
-            
-
-            
-
-            <code class="ruby">    # puts session[:weather]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="37">
+          <li class="covered" data-hits="1" data-linenumber="15">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    data = session[:weather].to_json</code>
+            <code class="ruby">    if cityname == &#39;&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="38">
+          <li class="missed" data-hits="0" data-linenumber="16">
+            
+            
+
+            
+
+            <code class="ruby">      @error = &#39;invalid city name&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="17">
+            
+            
+
+            
+
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="18">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    send_data data, :type =&gt; &#39;application/json; header=present&#39;, :disposition =&gt; &quot;attachment; filename=data.json&quot;</code>
+            <code class="ruby">      @weather = get_current_weather(cityname)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="39">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="40">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="41">
+          <li class="covered" data-hits="1" data-linenumber="19">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def upload</code>
+            <code class="ruby">      if not @_request.nil?</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="42">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="20">
+            
             
 
             
 
-            <code class="ruby">    if params[:file] != nil</code>
+            <code class="ruby">        session[:weather] = @weather</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="43">
-            
-            
-
-            
-
-            <code class="ruby">      rowarray = Array.new</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="44">
-            
-            
-
-            
-
-            <code class="ruby">      myfile = params[:file]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="45">
-            
-            
-
-            
-
-            <code class="ruby">      data = []</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="46">
-            
-            
-
-            
-
-            <code class="ruby">      CSV.foreach(myfile.path, headers: true) do |row|</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="47">
-            
-            
-
-            
-
-            <code class="ruby">        data &lt;&lt; row.to_hash</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="48">
+          <li class="never" data-hits="" data-linenumber="21">
             
             
 
@@ -915,13 +618,310 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="1" data-linenumber="22">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      if @weather == nil</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="23">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        @error = &#39;invalid city name&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="24">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="25">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="26">
+            
+            
+
+            
+
+            <code class="ruby">    # puts @weather != nil</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="27">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="28">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="29">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def forecast</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="30">
+            
+            
+
+            
+
+            <code class="ruby">    if request.post?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="31">
+            
+            
+
+            
+
+            <code class="ruby">      @city = request.POST[&#39;cityname&#39;]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="32">
+            
+            
+
+            
+
+            <code class="ruby">      filter_forecast(@city)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="33">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="34">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="35">
+            
+            
+
+            
+
+            <code class="ruby">  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="36">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def filter_forecast(city)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="37">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    @forecast, @times = get_forecast(city)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="38">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    if @forecast == nil</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="39">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      @error = &#39;Error fetching forecast&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="40">
+            
+            
+
+            
+
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="41">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      @times = @times.join(&#39;,&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="42">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="43">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="44">
+            
+            
+
+            
+
+            <code class="ruby">  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="45">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def data_download</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="46">
+            
+            
+
+            
+
+            <code class="ruby">    # puts session[:weather]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="47">
+            
+            
+
+            
+
+            <code class="ruby">    data = session[:weather].to_json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="48">
+            
+            
+
+            
+
+            <code class="ruby">    send_data data, :type =&gt; &#39;application/json; header=present&#39;, :disposition =&gt; &quot;attachment; filename=data.json&quot;</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="never" data-hits="" data-linenumber="49">
             
             
 
             
 
-            <code class="ruby">      # puts data</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -937,13 +937,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="51">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="51">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      # reformatting data</code>
+            
+
+            <code class="ruby">  def upload</code>
           </li>
         </div>
       
@@ -954,7 +954,7 @@
 
             
 
-            <code class="ruby">      @@imported_data = {}</code>
+            <code class="ruby">    if params[:file] != nil</code>
           </li>
         </div>
       
@@ -965,7 +965,7 @@
 
             
 
-            <code class="ruby">      data[0].keys.each{ |k| @@imported_data[k] = []}</code>
+            <code class="ruby">      rowarray = Array.new</code>
           </li>
         </div>
       
@@ -976,7 +976,7 @@
 
             
 
-            <code class="ruby">      data.each{ |x| </code>
+            <code class="ruby">      myfile = params[:file]</code>
           </li>
         </div>
       
@@ -987,7 +987,7 @@
 
             
 
-            <code class="ruby">        x.each{ |k,v| </code>
+            <code class="ruby">      import(myfile.path)</code>
           </li>
         </div>
       
@@ -998,7 +998,7 @@
 
             
 
-            <code class="ruby">          @@imported_data[k] &lt;&lt; v</code>
+            <code class="ruby">      redirect_to &#39;/plot&#39;</code>
           </li>
         </div>
       
@@ -1009,7 +1009,7 @@
 
             
 
-            <code class="ruby">        }</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1020,7 +1020,7 @@
 
             
 
-            <code class="ruby">      }</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -1031,23 +1031,56 @@
 
             
 
-            <code class="ruby">      </code>
+            <code class="ruby">  </code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="60">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="60">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      redirect_to &#39;/plot&#39;</code>
+            
+
+            <code class="ruby">  def import(myfile)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="61">
+          <li class="covered" data-hits="1" data-linenumber="61">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    data = []</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="62">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    CSV.foreach(myfile, headers: true) do |row|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="63">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      data &lt;&lt; row.to_hash</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="64">
             
             
 
@@ -1058,46 +1091,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="62">
+          <li class="never" data-hits="" data-linenumber="65">
             
             
 
             
 
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="63">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="64">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def plot(*args)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="65">
-            
-            
-
-            
-
-            <code class="ruby">    data = @@imported_data</code>
+            <code class="ruby">    # puts data</code>
           </li>
         </div>
       
@@ -1119,84 +1119,84 @@
 
             
 
-            <code class="ruby">    # get the keys</code>
+            <code class="ruby">    # reformatting data</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="68">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="68">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    @labels = data.keys</code>
+            
+
+            <code class="ruby">    @@imported_data = {}</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="69">
-            
-            
-
+          <li class="covered" data-hits="4" data-linenumber="69">
+            <span class="hits">4</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">    data[0].keys.each{ |k| @@imported_data[k] = []}</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="70">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="70">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    if request.post?</code>
+            
+
+            <code class="ruby">    data.each{ |x| </code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="71">
-            
-            
-
+          <li class="covered" data-hits="4" data-linenumber="71">
+            <span class="hits">4</span>
             
 
-            <code class="ruby">      if request.POST[&quot;query&quot;] != nil</code>
+            
+
+            <code class="ruby">      x.each{ |k,v| </code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="72">
-            
-            
-
+          <li class="covered" data-hits="12" data-linenumber="72">
+            <span class="hits">12</span>
             
 
-            <code class="ruby">        # type 2 - where the user writes queries</code>
+            
+
+            <code class="ruby">        @@imported_data[k] &lt;&lt; v</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="73">
+          <li class="never" data-hits="" data-linenumber="73">
             
             
 
             
 
-            <code class="ruby">        query = request.POST[&quot;query&quot;]</code>
+            <code class="ruby">      }</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="74">
+          <li class="never" data-hits="" data-linenumber="74">
             
             
 
             
 
-            <code class="ruby">        words = query.split</code>
+            <code class="ruby">    }</code>
           </li>
         </div>
       
@@ -1207,7 +1207,7 @@
 
             
 
-            <code class="ruby">        </code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -1218,23 +1218,45 @@
 
             
 
-            <code class="ruby">        # find common words b/t query and data columns</code>
+            <code class="ruby">  </code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="77">
+          <li class="covered" data-hits="1" data-linenumber="77">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def split_query(query)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="78">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    query.split</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="79">
             
             
 
             
 
-            <code class="ruby">        common_cols = words &amp; @labels</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="78">
+          <li class="never" data-hits="" data-linenumber="80">
             
             
 
@@ -1245,57 +1267,35 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="79">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="81">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">        if common_cols.length &lt; 2</code>
+            
+
+            <code class="ruby">  def plot(*args)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="80">
+          <li class="missed" data-hits="0" data-linenumber="82">
             
             
 
             
 
-            <code class="ruby">          @error = &#39;Could not find two data columns in your query&#39;</code>
+            <code class="ruby">    data = @@imported_data</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="81">
-            
-            
-
-            
-
-            <code class="ruby">        end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="82">
+          <li class="never" data-hits="" data-linenumber="83">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="83">
-            
-            
-
-            
-
-            <code class="ruby">        common_types = words &amp; [&#39;line&#39;, &#39;scatter&#39;]</code>
           </li>
         </div>
       
@@ -1306,7 +1306,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    # get the keys</code>
           </li>
         </div>
       
@@ -1317,34 +1317,12 @@
 
             
 
-            <code class="ruby">        if common_cols.length &lt; 1</code>
+            <code class="ruby">    @labels = data.keys</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="86">
-            
-            
-
-            
-
-            <code class="ruby">          @error = &#39;Could not find chart type in your query&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="87">
-            
-            
-
-            
-
-            <code class="ruby">        end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="88">
+          <li class="never" data-hits="" data-linenumber="86">
             
             
 
@@ -1355,13 +1333,35 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="89">
+          <li class="missed" data-hits="0" data-linenumber="87">
             
             
 
             
 
-            <code class="ruby">        if !@error</code>
+            <code class="ruby">    if request.post?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="88">
+            
+            
+
+            
+
+            <code class="ruby">      if request.POST[&quot;query&quot;] != nil</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="89">
+            
+            
+
+            
+
+            <code class="ruby">        # type 2 - where the user writes queries</code>
           </li>
         </div>
       
@@ -1372,7 +1372,7 @@
 
             
 
-            <code class="ruby">          @col1 = common_cols[0]</code>
+            <code class="ruby">        query = request.POST[&quot;query&quot;]</code>
           </li>
         </div>
       
@@ -1383,18 +1383,18 @@
 
             
 
-            <code class="ruby">          @col2 = common_cols[1]</code>
+            <code class="ruby">        words = split_query(query)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="92">
+          <li class="never" data-hits="" data-linenumber="92">
             
             
 
             
 
-            <code class="ruby">          @plot_type = common_types[0]</code>
+            <code class="ruby">        </code>
           </li>
         </div>
       
@@ -1405,18 +1405,18 @@
 
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby">        # find common words b/t query and data columns</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="94">
+          <li class="missed" data-hits="0" data-linenumber="94">
             
             
 
             
 
-            <code class="ruby">      else</code>
+            <code class="ruby">        common_cols = words &amp; @labels</code>
           </li>
         </div>
       
@@ -1427,276 +1427,34 @@
 
             
 
-            <code class="ruby">        # type 1 - where the user selects columns</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="96">
-            
-            
-
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="97">
+          <li class="missed" data-hits="0" data-linenumber="96">
             
             
 
             
 
-            <code class="ruby">        # get selected columns</code>
+            <code class="ruby">        if common_cols.length &lt; 2</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="98">
+          <li class="missed" data-hits="0" data-linenumber="97">
             
             
 
             
 
-            <code class="ruby">        @col1 = request.POST[&#39;column1&#39;]</code>
+            <code class="ruby">          @error = &#39;Could not find two data columns in your query&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="99">
-            
-            
-
-            
-
-            <code class="ruby">        @col2 = request.POST[&#39;column2&#39;]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="100">
-            
-            
-
-            
-
-            <code class="ruby">        @plot_type = request.POST[&#39;plot_type&#39;]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="101">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="102">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="103">
-            
-            
-
-            
-
-            <code class="ruby">      if !@error </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="104">
-            
-            
-
-            
-
-            <code class="ruby">        # convert to x,y format</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="105">
-            
-            
-
-            
-
-            <code class="ruby">        data1 = data[@col1]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="106">
-            
-            
-
-            
-
-            <code class="ruby">        data2 = data[@col2]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="107">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="108">
-            
-            
-
-            
-
-            <code class="ruby">        if @plot_type == &#39;line&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="109">
-            
-            
-
-            
-
-            <code class="ruby">          data1 = data1.map(&amp;:to_f)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="110">
-            
-            
-
-            
-
-            <code class="ruby">          data2 = data2.map(&amp;:to_f)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="111">
-            
-            
-
-            
-
-            <code class="ruby">          @chart_data = {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="112">
-            
-            
-
-            
-
-            <code class="ruby">            @col1 =&gt; data1,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="113">
-            
-            
-
-            
-
-            <code class="ruby">            @col2 =&gt; data2,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="114">
-            
-            
-
-            
-
-            <code class="ruby">          }.to_json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="115">
-            
-            
-
-            
-
-            <code class="ruby">          n = data1.length</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="116">
-            
-            
-
-            
-
-            <code class="ruby">          @chart_labels = (1..n).to_a</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="117">
-            
-            
-
-            
-
-            <code class="ruby">        else        </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="118">
-            
-            
-
-            
-
-            <code class="ruby">          joint = data1.zip(data2) </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="119">
-            
-            
-
-            
-
-            <code class="ruby">          @chart_data = joint.map{ |x,y| {&#39;x&#39;: x, &#39;y&#39;: y}}.to_json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="120">
+          <li class="never" data-hits="" data-linenumber="98">
             
             
 
@@ -1707,315 +1465,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="121">
-            
-            
-
-            
-
-            <code class="ruby">        # puts @chart_data</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="122">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="123">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="124">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="125">
-            
-            
-
-            
-
-            <code class="ruby">  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="126">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  @@api_key = &quot;ade2a800bae9976517a8880b320bab8c&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="127">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  @@base_url = &quot;http://api.openweathermap.org/data/2.5/weather?&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="128">
-            
-            
-
-            
-
-            <code class="ruby">  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="129">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def get_current_weather(city_name)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="5" data-linenumber="130">
-            <span class="hits">5</span>
-            
-
-            
-
-            <code class="ruby">    complete_url = @@base_url + &quot;&amp;q=&quot; + city_name + &quot;&amp;appid=&quot; + @@api_key + &quot;&amp;q=&quot; + city_name</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="5" data-linenumber="131">
-            <span class="hits">5</span>
-            
-
-            
-
-            <code class="ruby">    url = URI.parse(complete_url)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="5" data-linenumber="132">
-            <span class="hits">5</span>
-            
-
-            
-
-            <code class="ruby">    req = Net::HTTP::Get.new(url.to_s)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="5" data-linenumber="133">
-            <span class="hits">5</span>
-            
-
-            
-
-            <code class="ruby">    res = Net::HTTP.start(url.host, url.port) {|http|</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="5" data-linenumber="134">
-            <span class="hits">5</span>
-            
-
-            
-
-            <code class="ruby">      http.request(req)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="135">
-            
-            
-
-            
-
-            <code class="ruby">    }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="5" data-linenumber="136">
-            <span class="hits">5</span>
-            
-
-            
-
-            <code class="ruby">    x = JSON.parse(res.body)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="5" data-linenumber="137">
-            <span class="hits">5</span>
-            
-
-            
-
-            <code class="ruby">    if x[&quot;cod&quot;] != &quot;404&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="138">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">      y = x[&quot;main&quot;]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="139">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">      ret = {}</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="140">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">      ret[&quot;current_temperature&quot;] = (y[&quot;temp&quot;] - 273.15).round(2)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="141">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">      ret[&quot;current_pressure&quot;] = y[&quot;pressure&quot;].round(2)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="142">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">      ret[&quot;current_humidity&quot;] = y[&quot;humidity&quot;].round(2)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="143">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">      ret[&quot;description&quot;] = x[&quot;weather&quot;][0][&quot;description&quot;]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="144">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">      return ret</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="145">
-            
-            
-
-            
-
-            <code class="ruby">    else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="146">
-            
-            
-
-            
-
-            <code class="ruby">      return nil</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="147">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="148">
-            
-            
-
-            
-
-            <code class="ruby">  end </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="149">
+          <li class="never" data-hits="" data-linenumber="99">
             
             
 
@@ -2026,172 +1476,447 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="150">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="100">
+            
             
 
             
 
-            <code class="ruby">  def get_forecast(city_name) </code>
+            <code class="ruby">        common_types = words &amp; [&#39;line&#39;, &#39;scatter&#39;]</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="151">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="101">
+            
             
 
             
 
-            <code class="ruby">    complete_url = &#39;http://api.openweathermap.org/data/2.5/forecast?appid=&#39; + @@api_key + &quot;&amp;q=&quot; + city_name + &#39;&amp;units=metric&#39;</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="152">
-            <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="102">
+            
             
 
             
 
-            <code class="ruby">    url = URI.parse(complete_url)</code>
+            <code class="ruby">        if common_cols.length &lt; 1</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="153">
-            <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="103">
+            
             
 
             
 
-            <code class="ruby">    req = Net::HTTP::Get.new(url.to_s)</code>
+            <code class="ruby">          @error = &#39;Could not find chart type in your query&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="154">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="104">
+            
             
 
             
 
-            <code class="ruby">    res = Net::HTTP.start(url.host, url.port) {|http|</code>
+            <code class="ruby">        end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="155">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="105">
+            
             
 
             
 
-            <code class="ruby">      http.request(req)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="156">
+          <li class="missed" data-hits="0" data-linenumber="106">
             
             
 
             
 
-            <code class="ruby">    }</code>
+            <code class="ruby">        if !@error</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="157">
-            <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="107">
+            
             
 
             
 
-            <code class="ruby">    x = JSON.parse(res.body)</code>
+            <code class="ruby">          @col1 = common_cols[0]</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="158">
-            <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="108">
+            
             
 
             
 
-            <code class="ruby">    if x[&#39;cod&#39;] == &#39;200&#39;</code>
+            <code class="ruby">          @col2 = common_cols[1]</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="159">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="109">
+            
             
 
             
 
-            <code class="ruby">        l = x[&#39;list&#39;]</code>
+            <code class="ruby">          @plot_type = common_types[0]</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="41" data-linenumber="160">
-            <span class="hits">41</span>
+          <li class="never" data-hits="" data-linenumber="110">
+            
             
 
             
 
-            <code class="ruby">        temp = l.map { |y| y[&#39;main&#39;][&#39;temp&#39;] }</code>
+            <code class="ruby">        end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="41" data-linenumber="161">
-            <span class="hits">41</span>
+          <li class="never" data-hits="" data-linenumber="111">
+            
             
 
             
 
-            <code class="ruby">        time = l.map { |y| y[&#39;dt_txt&#39;]       }</code>
+            <code class="ruby">      else</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="162">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="112">
+            
             
 
             
 
-            <code class="ruby">        return temp, time</code>
+            <code class="ruby">        # type 1 - where the user selects columns</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="163">
+          <li class="never" data-hits="" data-linenumber="113">
             
             
 
             
 
-            <code class="ruby">    else</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="164">
+          <li class="never" data-hits="" data-linenumber="114">
             
             
 
             
 
-            <code class="ruby">        return nil</code>
+            <code class="ruby">        # get selected columns</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="165">
+          <li class="missed" data-hits="0" data-linenumber="115">
+            
+            
+
+            
+
+            <code class="ruby">        @col1 = request.POST[&#39;column1&#39;]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="116">
+            
+            
+
+            
+
+            <code class="ruby">        @col2 = request.POST[&#39;column2&#39;]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="117">
+            
+            
+
+            
+
+            <code class="ruby">        @plot_type = request.POST[&#39;plot_type&#39;]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="118">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="119">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="120">
+            
+            
+
+            
+
+            <code class="ruby">      if !@error </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="121">
+            
+            
+
+            
+
+            <code class="ruby">        # convert to x,y format</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="122">
+            
+            
+
+            
+
+            <code class="ruby">        data1 = data[@col1]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="123">
+            
+            
+
+            
+
+            <code class="ruby">        data2 = data[@col2]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="124">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="125">
+            
+            
+
+            
+
+            <code class="ruby">        if @plot_type == &#39;line&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="126">
+            
+            
+
+            
+
+            <code class="ruby">          data1 = data1.map(&amp;:to_f)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="127">
+            
+            
+
+            
+
+            <code class="ruby">          data2 = data2.map(&amp;:to_f)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="128">
+            
+            
+
+            
+
+            <code class="ruby">          @chart_data = {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="129">
+            
+            
+
+            
+
+            <code class="ruby">            @col1 =&gt; data1,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="130">
+            
+            
+
+            
+
+            <code class="ruby">            @col2 =&gt; data2,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="131">
+            
+            
+
+            
+
+            <code class="ruby">          }.to_json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="132">
+            
+            
+
+            
+
+            <code class="ruby">          n = data1.length</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="133">
+            
+            
+
+            
+
+            <code class="ruby">          @chart_labels = (1..n).to_a</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="134">
+            
+            
+
+            
+
+            <code class="ruby">        else        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="135">
+            
+            
+
+            
+
+            <code class="ruby">          joint = data1.zip(data2) </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="136">
+            
+            
+
+            
+
+            <code class="ruby">          @chart_data = joint.map{ |x,y| {&#39;x&#39;: x, &#39;y&#39;: y}}.to_json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="137">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="138">
+            
+            
+
+            
+
+            <code class="ruby">        # puts @chart_data</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="139">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="140">
             
             
 
@@ -2202,7 +1927,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="166">
+          <li class="never" data-hits="" data-linenumber="141">
             
             
 
@@ -2213,7 +1938,469 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="167">
+          <li class="never" data-hits="" data-linenumber="142">
+            
+            
+
+            
+
+            <code class="ruby">  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="143">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  @@api_key = &quot;ade2a800bae9976517a8880b320bab8c&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="144">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  @@base_url = &quot;http://api.openweathermap.org/data/2.5/weather?&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="145">
+            
+            
+
+            
+
+            <code class="ruby">  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="146">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def get_current_weather(city_name)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="147">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">    complete_url = @@base_url + &quot;&amp;q=&quot; + city_name + &quot;&amp;appid=&quot; + @@api_key + &quot;&amp;q=&quot; + city_name</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="148">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">    url = URI.parse(complete_url)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="149">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">    req = Net::HTTP::Get.new(url.to_s)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="150">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">    res = Net::HTTP.start(url.host, url.port) {|http|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="151">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">      http.request(req)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="152">
+            
+            
+
+            
+
+            <code class="ruby">    }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="153">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">    x = JSON.parse(res.body)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="154">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">    if x[&quot;cod&quot;] != &quot;404&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="155">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      y = x[&quot;main&quot;]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="156">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      ret = {}</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="157">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      ret[&quot;current_temperature&quot;] = (y[&quot;temp&quot;] - 273.15).round(2)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="158">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      ret[&quot;current_pressure&quot;] = y[&quot;pressure&quot;].round(2)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="159">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      ret[&quot;current_humidity&quot;] = y[&quot;humidity&quot;].round(2)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="160">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      ret[&quot;description&quot;] = x[&quot;weather&quot;][0][&quot;description&quot;]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="161">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      return ret</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="162">
+            
+            
+
+            
+
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="163">
+            
+            
+
+            
+
+            <code class="ruby">      return nil</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="164">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="165">
+            
+            
+
+            
+
+            <code class="ruby">  end </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="166">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="167">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def get_forecast(city_name) </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="168">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    complete_url = &#39;http://api.openweathermap.org/data/2.5/forecast?appid=&#39; + @@api_key + &quot;&amp;q=&quot; + city_name + &#39;&amp;units=metric&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="169">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    url = URI.parse(complete_url)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="170">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    req = Net::HTTP::Get.new(url.to_s)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="171">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    res = Net::HTTP.start(url.host, url.port) {|http|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="172">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      http.request(req)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="173">
+            
+            
+
+            
+
+            <code class="ruby">    }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="174">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    x = JSON.parse(res.body)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="175">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    if x[&#39;cod&#39;] == &#39;200&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="176">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        l = x[&#39;list&#39;]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="82" data-linenumber="177">
+            <span class="hits">82</span>
+            
+
+            
+
+            <code class="ruby">        temp = l.map { |y| y[&#39;main&#39;][&#39;temp&#39;] }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="82" data-linenumber="178">
+            <span class="hits">82</span>
+            
+
+            
+
+            <code class="ruby">        time = l.map { |y| y[&#39;dt_txt&#39;]       }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="179">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        return temp, time</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="180">
+            
+            
+
+            
+
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="181">
+            
+            
+
+            
+
+            <code class="ruby">        return nil</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="182">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="183">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="184">
             
             
 

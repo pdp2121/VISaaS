@@ -7,28 +7,38 @@ class WeatherController < ApplicationController
   def data
     if request.post?
       cityname = request.POST['cityname']
-      if cityname == ''
-        @error = 'invalid city name'
-      else
-        @weather = get_current_weather(cityname)
-        session[:weather] = @weather
-        if @weather == nil
-          @error = 'invalid city name'
-        end
-      end
-      # puts @weather != nil
+      filter_city(cityname)
     end
+  end
+  
+  def filter_city(cityname)
+    if cityname == ''
+      @error = 'invalid city name'
+    else
+      @weather = get_current_weather(cityname)
+      if not @_request.nil?
+        session[:weather] = @weather
+      end
+      if @weather == nil
+        @error = 'invalid city name'
+      end
+    end
+    # puts @weather != nil
   end
 
   def forecast
     if request.post?
       @city = request.POST['cityname']
-      @forecast, @times = get_forecast(@city)
-      if @forecast == nil
-        @error = 'Error fetching forecast'
-      else
-        @times = @times.join(',')
-      end
+      filter_forecast(@city)
+    end
+  end
+  
+  def filter_forecast(city)
+    @forecast, @times = get_forecast(city)
+    if @forecast == nil
+      @error = 'Error fetching forecast'
+    else
+      @times = @times.join(',')
     end
   end
   
@@ -42,23 +52,30 @@ class WeatherController < ApplicationController
     if params[:file] != nil
       rowarray = Array.new
       myfile = params[:file]
-      data = []
-      CSV.foreach(myfile.path, headers: true) do |row|
-        data << row.to_hash
-      end
-      # puts data
-
-      # reformatting data
-      @@imported_data = {}
-      data[0].keys.each{ |k| @@imported_data[k] = []}
-      data.each{ |x| 
-        x.each{ |k,v| 
-          @@imported_data[k] << v
-        }
-      }
-      
+      import(myfile.path)
       redirect_to '/plot'
     end
+  end
+  
+  def import(myfile)
+    data = []
+    CSV.foreach(myfile, headers: true) do |row|
+      data << row.to_hash
+    end
+    # puts data
+
+    # reformatting data
+    @@imported_data = {}
+    data[0].keys.each{ |k| @@imported_data[k] = []}
+    data.each{ |x| 
+      x.each{ |k,v| 
+        @@imported_data[k] << v
+      }
+    }
+  end
+  
+  def split_query(query)
+    query.split
   end
 
   def plot(*args)
@@ -71,7 +88,7 @@ class WeatherController < ApplicationController
       if request.POST["query"] != nil
         # type 2 - where the user writes queries
         query = request.POST["query"]
-        words = query.split
+        words = split_query(query)
         
         # find common words b/t query and data columns
         common_cols = words & @labels
