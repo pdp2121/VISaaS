@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post 'weather/data_download' => 'weather#data_download'
   match 'upload' => 'weather#upload', via: [:get, :post]
   match '/plot' => 'weather#plot', via: [:get, :post]
+  match '/worldmap' => 'weather#worldmap', via: [:get, :post]
+  match '/usmap' => 'weather#usmap', via: [:get, :post]
 
   get '/index', to: "home#index"
   root "home#index"
