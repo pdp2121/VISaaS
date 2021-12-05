@@ -1,19 +1,35 @@
 <h2>Create US Map</h2>
 
 <canvas id="myChart"></canvas>
+<div class="grid_content">
+  <div>
+    <button class="m-3" onclick="updateMap()">Update map</button>
+    Try updating the values in the sheet below
+  </div>
+  <div id="grid"></div>
+</div>
+
 <script>
+var chart;
+var states;
+var state_value_mapping = {};
+
 fetch('/states-10m.json').then((r) => r.json()).then((us) => {
     const nation = ChartGeo.topojson.feature(us, us.objects.nation).features[0];
-    const states = ChartGeo.topojson.feature(us, us.objects.states).features;
+    states = ChartGeo.topojson.feature(us, us.objects.states).features;
+
+    states.map((d) => {
+      state_value_mapping[d.properties.name] = Math.random();
+    });
   
-    const chart = new Chart(document.getElementById("myChart").getContext("2d"), {
+    chart = new Chart(document.getElementById("myChart").getContext("2d"), {
       type: 'choropleth',
       data: {
         labels: states.map((d) => d.properties.name),
         datasets: [{
           label: 'States',
           outline: nation,
-          data: states.map((d) => ({feature: d, value: Math.random() * 10})),
+          data: states.map((d) => ({feature: d, value: state_value_mapping[d.properties.name]})),
         }]
       },
       options: {
@@ -36,5 +52,46 @@ fetch('/states-10m.json').then((r) => r.json()).then((us) => {
         },
       }
     });
+
+    initGrid();
+});
+
+var grid; // for global access
+function initGrid() {
+  grid = canvasDatagrid({
+    parentNode: document.getElementById('grid'),
+    allowColumnReordering: false,
+    allowRowReordering: false,
+    tree: false,
+    debug: false,
+    showPerformance: false,
   });
+  grid.style.height = '60rem';
+  grid.style.width = 'auto';
+  grid.schema = [
+    {
+      dataTypeName: "string",
+      name: "State",
+      type: "string",
+    },
+    {
+      dataTypeName: "number",
+      name: "Value",
+      type: "number",
+    }
+  ];
+
+  grid.data = states.map((d) => ({State: d.properties.name, Value: state_value_mapping[d.properties.name]}));
+  grid.draw()
+}
+
+function updateMap(){
+  const data = grid.data;
+  for(var i in data){
+    state_value_mapping[data[i]['State']] = parseFloat(data[i]['Value'])
+  }
+
+  chart.data.datasets[0].data = states.map((d) => ({feature: d, value: state_value_mapping[d.properties.name]}))
+  chart.update();
+}
 </script>
