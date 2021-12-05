@@ -55,6 +55,6 @@
  }
 
  #inputwords {
-     width: max(10rem, 50vw);
+     width: calc(max(10rem, 50vw));
      height: 5rem;
  }
