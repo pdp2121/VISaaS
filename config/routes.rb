@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   match '/worldmap' => 'weather#worldmap', via: [:get]
   match '/usmap' => 'weather#usmap', via: [:get]
   match '/wordcloud' => 'weather#wordcloud', via: [:get]
+  match '/animatedusmap' => 'weather#animatedusmap', via: [:get]
 
   get '/index', to: "home#index"
   root "home#index"

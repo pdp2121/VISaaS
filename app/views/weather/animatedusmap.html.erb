@@ -1,0 +1,115 @@
+<h2>Create Animated US Map</h2>
+
+<canvas id="myChart"></canvas>
+<label for="customRange2" class="form-label">Slide to plot a column</label>
+<input type="range" class="form-range" min="0" value="0" step="1" id="rangeSelector" onclick="updateMap()">
+<div class="grid_content">
+  <div id="grid"></div>
+</div>
+
+<script src="/gif.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>
+var chart;
+var states;
+var state_value_mapping = {};
+const N = 5; // iterations of gif
+
+// set range for rangeSelector
+$("#rangeSelector").attr("max", N-1)
+
+// helper method to generate an array of increasing values
+function array_generator(n){
+    let res = []
+    let prefix = 0
+    for(var i=0; i<n; ++i) {
+        prefix += Math.floor(Math.random() * 10); // int in [0, 10]
+        res.push(prefix)
+    }
+    return res;
+}
+
+fetch('/states-10m.json').then((r) => r.json()).then((us) => {
+    const nation = ChartGeo.topojson.feature(us, us.objects.nation).features[0];
+    states = ChartGeo.topojson.feature(us, us.objects.states).features;
+
+    states.map((d) => { state_value_mapping[d.properties.name] = array_generator(N) });
+
+    chart = new Chart(document.getElementById("myChart").getContext("2d"), {
+    type: 'choropleth',
+    data: {
+        labels: states.map((d) => d.properties.name),
+        datasets: [{
+        label: 'States',
+        outline: nation,
+        data: states.map((d) => ({feature: d, value: state_value_mapping[d.properties.name][0]})),
+        }]
+    },
+    options: {
+        plugins: {
+        legend: {
+            display: false
+        },
+        },
+        scales: {
+        xy: {
+            projection: 'albersUsa'  
+        },
+        color: {
+            quantize: 5,
+            legend: {
+            position: 'bottom-right',
+            align: 'bottom'
+            },
+        }
+        },
+    }
+    });
+
+    initGrid();
+});
+
+var grid; // for global access
+function initGrid() {
+    grid = canvasDatagrid({
+        parentNode: document.getElementById('grid'),
+        allowColumnReordering: false,
+        allowRowReordering: false,
+        tree: false,
+        debug: false,
+        showPerformance: false,
+    });
+    grid.style.height = '60rem';
+    grid.style.width = 'auto';
+    
+    grid.schema = [{
+        dataTypeName: "string",
+        name: "State",
+        type: "string",
+    },
+    ...Array.from({length: N}).map((_, idx) => ({
+        dataTypeName: "number",
+        name: "Column " + (idx+1),
+        type: "number",
+    }))]
+
+    grid.data = states.map(function (d) {
+        var cell = {}
+        cell['State'] = d.properties.name
+        for(var i=0; i<N; ++i)
+            cell['Column ' + (i+1)] = state_value_mapping[d.properties.name][i]
+        return cell;
+    });
+
+    for(var i=0; i<N; ++i)
+        grid.setColumnWidth(i+1, 100)
+    grid.draw()
+}
+
+function updateMap(){
+    const i = $("#rangeSelector").val();
+    const data = grid.data;
+    chart.data.datasets[0].data = states.map((d) => ({feature: d, value: state_value_mapping[d.properties.name][i]}))
+    chart.update();
+}
+</script>
