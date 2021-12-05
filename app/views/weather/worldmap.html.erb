@@ -1,19 +1,34 @@
 <h2>Create World Map</h2>
 
-<canvas id="myChart"></canvas>
-<script src="https://unpkg.com/chart.js@3.6.1"></script>
-<script src="https://unpkg.com/chartjs-chart-geo@3.6.0"></script>
-<script>
-fetch('https://unpkg.com/world-atlas/countries-50m.json').then((r) => r.json()).then((data) => {
-      const countries = ChartGeo.topojson.feature(data, data.objects.countries).features;
 
-  const chart = new Chart(document.getElementById("myChart").getContext("2d"), {
+<canvas id="myChart"></canvas>
+<div class="grid_content">
+  <div>
+    <button class="m-3" onclick="updateMap()">Update map</button>
+    Try updating the values in the sheet below
+  </div>
+  <div id="grid"></div>
+</div>
+
+<script>
+var chart;
+var countries;
+var country_value_mapping = {};
+
+fetch('/countries-50m.json').then((r) => r.json()).then((data) => {
+  countries = ChartGeo.topojson.feature(data, data.objects.countries).features;
+
+  countries.map((d) => {
+    country_value_mapping[d.properties.name] = Math.random();
+  });
+
+  chart = new Chart(document.getElementById("myChart").getContext("2d"), {
     type: 'choropleth',
     data: {
       labels: countries.map((d) => d.properties.name),
       datasets: [{
         label: 'Countries',
-        data: countries.map((d) => ({feature: d, value: Math.random()})),
+        data: countries.map((d) => ({feature: d, value: country_value_mapping[d.properties.name]})),
       }]
     },
     options: {
@@ -31,5 +46,46 @@ fetch('https://unpkg.com/world-atlas/countries-50m.json').then((r) => r.json()).
       }
     }
   });
+
+  initGrid();
 });
+
+var grid; // for global access
+function initGrid() {
+  grid = canvasDatagrid({
+    parentNode: document.getElementById('grid'),
+    allowColumnReordering: false,
+    allowRowReordering: false,
+    tree: false,
+    debug: false,
+    showPerformance: false,
+  });
+  grid.style.height = '60rem';
+  grid.style.width = 'auto';
+  grid.schema = [
+    {
+      dataTypeName: "string",
+      name: "Country",
+      type: "string",
+    },
+    {
+      dataTypeName: "number",
+      name: "Value",
+      type: "number",
+    },
+  ]
+
+  grid.data = countries.map((d) => ({Country: d.properties.name, Value: country_value_mapping[d.properties.name]}));
+  grid.draw()
+}
+
+function updateMap(){
+  const data = grid.data;
+  for(var i in data){
+    country_value_mapping[data[i]['Country']] = parseFloat(data[i]['Value'])
+  }
+
+  chart.data.datasets[0].data = countries.map((d) => ({feature: d, value: country_value_mapping[d.properties.name]}))
+  chart.update();
+}
 </script>

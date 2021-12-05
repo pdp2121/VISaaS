@@ -1,10 +1,8 @@
 <h2>Create US Map</h2>
 
 <canvas id="myChart"></canvas>
-<script src="https://unpkg.com/chart.js@3.6.1"></script>
-<script src="https://unpkg.com/chartjs-chart-geo@3.6.0"></script>
 <script>
-fetch('https://unpkg.com/us-atlas/states-10m.json').then((r) => r.json()).then((us) => {
+fetch('/states-10m.json').then((r) => r.json()).then((us) => {
     const nation = ChartGeo.topojson.feature(us, us.objects.nation).features[0];
     const states = ChartGeo.topojson.feature(us, us.objects.states).features;
   
