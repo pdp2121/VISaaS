@@ -1,5 +1,8 @@
 # ViSaaS
 ==========
+
+[Live Here](https://blooming-caverns-07190.herokuapp.com)
+
 ## Team 33 members:
 
 Malcolm Mashig (mjm2396)
@@ -31,8 +34,9 @@ Run test coverage
 bundle exec rspec
 ```
 
-## Heroku Link
-https://blooming-caverns-07190.herokuapp.com
+## Heroku 
+- Deploy from any branch using `git push heroku <branch>: master`
+- The app is live at https://blooming-caverns-07190.herokuapp.com
 
 ## GitHub Link
 https://github.com/pdp2121/VISaaS/tree/proj-iter-2
