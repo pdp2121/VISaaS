@@ -1,15 +1,25 @@
 <h2>Create Animated US Map</h2>
 
 <canvas id="myChart"></canvas>
-<label for="customRange2" class="form-label">Slide to plot a column</label>
-<input type="range" class="form-range" min="0" value="0" step="1" id="rangeSelector" onclick="updateMap()">
+<div class="d-flex justify-content-center m-2">
+    <label for="customRange2" class="form-label">Slide to change the column</label>
+    <input type="range" class="form-range" min="0" value="0" step="1" id="rangeSelector" onclick="updateMap()">
+    <button class="ml-4" onclick="preview_gif()">preview GIF</button>
+</div>
 <div class="grid_content">
   <div id="grid"></div>
 </div>
 
 <script src="/gif.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script>
+const gif = new GIF({
+    workers: 4,
+    quality: 10
+});
+gif.on('finished', function(blob) {
+    window.open(URL.createObjectURL(blob));
+});
 var chart;
 var states;
 var state_value_mapping = {};
@@ -47,9 +57,13 @@ fetch('/states-10m.json').then((r) => r.json()).then((us) => {
     },
     options: {
         plugins: {
-        legend: {
-            display: false
-        },
+            legend: {
+                display: false
+            },
+            title: {
+                display: true,
+                text: "Column 1"
+            }
         },
         scales: {
         xy: {
@@ -107,9 +121,42 @@ function initGrid() {
 }
 
 function updateMap(){
-    const i = $("#rangeSelector").val();
+    const i = parseInt($("#rangeSelector").val());
     const data = grid.data;
+    chart.options.plugins.title.text = "Column " + (i+1);
     chart.data.datasets[0].data = states.map((d) => ({feature: d, value: state_value_mapping[d.properties.name][i]}))
     chart.update();
+}
+
+function preview_gif(){
+    const data = grid.data;
+
+    var i = 0;                
+
+    function myLoop() {         
+        setTimeout(function() {   
+            
+            chart.options.plugins.title.text = "Column " + (i+1);
+            chart.data.datasets[0].data = states.map((d) => ({feature: d, value: state_value_mapping[d.properties.name][i]}))
+            chart.update()
+            gif.addFrame(chart.canvas, {delay: 100*i});
+
+            i++;                  
+            if (i < N) {         
+                myLoop();             
+            }             
+            if (i == N){
+                gif.render();     
+            }
+        }, 500);
+    }
+
+    myLoop(); 
+
+//    for(var i=0; i<N; ++i){
+  //  }
+
+    // map is changed now, revert back to prev state
+//    updateMap()
 }
 </script>
