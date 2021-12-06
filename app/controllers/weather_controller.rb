@@ -97,7 +97,7 @@ class WeatherController < ApplicationController
           @error = 'Could not find two data columns in your query'
         end
 
-        common_types = words & ['line', 'scatter']
+        common_types = words & ['line', 'scatter', 'bar']
 
         if common_cols.length < 1
           @error = 'Could not find chart type in your query'
@@ -122,7 +122,7 @@ class WeatherController < ApplicationController
         data1 = data[@col1]
         data2 = data[@col2]
 
-        if @plot_type == 'line'
+        if @plot_type == 'line' or @plot_type == 'bar'
           data1 = data1.map(&:to_f)
           data2 = data2.map(&:to_f)
           @chart_data = {
@@ -135,7 +135,8 @@ class WeatherController < ApplicationController
           joint = data1.zip(data2) 
           @chart_data = joint.map{ |x,y| {'x': x, 'y': y}}.to_json
         end
-        # puts @chart_data
+        puts @chart_data
+        puts @plot_type
       end
     end
   end

@@ -22,6 +22,7 @@
   <select name="plot_type" id="plot_type">
     <option value="scatter">Scatter Plot</option>
     <option value="line">Line Graph</option>
+    <option value="bar">Bar Chart</option>
   </select>
 
   <input type='submit' value="Create Chart from Labels" />
@@ -110,6 +111,52 @@
             legend: {
               position: 'top',
             },
+          }
+        }
+      });
+    </script>
+  <% end %>
+
+  <% if @plot_type == 'bar' %>
+    <script>
+      var ctx = document.getElementById('myChart').getContext('2d');
+  
+      const data = {
+        datasets: [{
+          label: 'Bar Chart',
+          data: <%= @chart_data.html_safe %>,
+          backgroundColor: 'rgb(255, 99, 132)'
+        }],
+      };
+  
+      let chart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: {
+          scales: {
+            x: {
+              type: "category",
+              categoryPercentage: .8,
+              barPercentage: .9,
+              gridLines: {
+                offsetGridLines: !0
+              }
+            },
+            y: {
+              type: "linear"
+            },
+            xAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: '<%= @col1 %>'
+              }
+            }],
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: '<%= @col2 %>'
+              }
+            }]
           }
         }
       });
