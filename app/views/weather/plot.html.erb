@@ -37,7 +37,7 @@
 
 <% if @chart_data %>
 <div id="chart_div">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <canvas id="myChart" width="400" height="400"></canvas>
 
   <% if @plot_type == 'scatter' %>
@@ -64,7 +64,9 @@
           scales: {
             x: {
               type: 'linear',
-              position: 'bottom'
+              display: true,
+              position: 'bottom',
+              text: '<%= @col1 %>'
             },
             xAxes: [{
               scaleLabel: {
@@ -134,14 +136,6 @@
         data: data,
         options: {
           scales: {
-            x: {
-              type: "category",
-              categoryPercentage: .8,
-              barPercentage: .9,
-              gridLines: {
-                offsetGridLines: !0
-              }
-            },
             y: {
               type: "linear"
             },

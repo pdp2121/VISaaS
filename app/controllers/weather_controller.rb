@@ -122,7 +122,7 @@ class WeatherController < ApplicationController
         data1 = data[@col1]
         data2 = data[@col2]
 
-        if @plot_type == 'line' or @plot_type == 'bar'
+        if @plot_type == 'line'
           data1 = data1.map(&:to_f)
           data2 = data2.map(&:to_f)
           @chart_data = {
@@ -131,12 +131,16 @@ class WeatherController < ApplicationController
           }.to_json
           n = data1.length
           @chart_labels = (1..n).to_a
+        elsif @plot_type == 'bar'
+          joint = data1.zip(data2)
+          @chart_data = Hash[joint].to_json
         else        
           joint = data1.zip(data2) 
           @chart_data = joint.map{ |x,y| {'x': x, 'y': y}}.to_json
         end
-        puts @chart_data
-        puts @plot_type
+        # puts @chart_data
+        # puts @chart_labels
+        # puts @plot_type
       end
     end
   end
