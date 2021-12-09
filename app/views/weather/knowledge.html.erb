@@ -1,0 +1,28 @@
+<h2>Create Knowledge Graph</h2>
+
+
+<main role="main" class="container">
+    <hr class="my-4">
+    <p>
+        Enter sentence like: <br /> <b>The European Commission said that nuclear Energy may be dangerous</b>
+    </p>
+
+    <form class="form" onkeypress="return event.keyCode != 13;">
+        <div class="form-group mx-sm-3 md-2">
+            <input type="text" class="form-control form-control-xs" id="input_text" placeholder="I Like Moscow!">
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-primary" id="get_ner_button">Search Entities</button>
+        </div>
+    </form>
+
+    <div class="result main-result"></div>
+</main>
+<div id="cy"></div>
+
+
+<script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+<script src="/vocabs.js"></script>
+<script src="/predict.js"></script>
