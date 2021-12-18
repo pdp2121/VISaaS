@@ -1,7 +1,7 @@
 
 
-Given /^I choose (.+) data$/ do |dataset|
-  visit "/#{dataset}/data"
+Given /^I choose (.+)$/ do |feat|
+  visit "/#{feat}"
 end
 
 When /^I enter the filter "(.+)" for (.+) data$/ do |filter, dataset|
@@ -9,6 +9,10 @@ When /^I enter the filter "(.+)" for (.+) data$/ do |filter, dataset|
     fill_in("cityname", with: filter)
   end
   click_button("Submit")
+end
+
+When /^I click "(.+)"$/ do |button|
+  click_button(button)
 end
 
 When /^I download the data$/ do
