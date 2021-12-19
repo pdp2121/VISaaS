@@ -39,7 +39,7 @@ bundle exec rspec
 - The app is live at https://blooming-caverns-07190.herokuapp.com
 
 ## GitHub Link
-https://github.com/pdp2121/VISaaS/tree/proj-iter-2
+https://github.com/pdp2121/VISaaS/tree/map_plots
 
 ## Notes
 
