@@ -4,50 +4,6 @@ require 'csv'
 class WeatherController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  def data
-    if request.post?
-      cityname = request.POST['cityname']
-      filter_city(cityname)
-    end
-  end
-  
-  def filter_city(cityname)
-    if cityname == ''
-      @error = 'invalid city name'
-    else
-      @weather = get_current_weather(cityname)
-      if not @_request.nil?
-        session[:weather] = @weather
-      end
-      if @weather == nil
-        @error = 'invalid city name'
-      end
-    end
-    # puts @weather != nil
-  end
-
-  def forecast
-    if request.post?
-      @city = request.POST['cityname']
-      filter_forecast(@city)
-    end
-  end
-  
-  def filter_forecast(city)
-    @forecast, @times = get_forecast(city)
-    if @forecast == nil
-      @error = 'Error fetching forecast'
-    else
-      @times = @times.join(',')
-    end
-  end
-  
-  def data_download
-    # puts session[:weather]
-    data = session[:weather].to_json
-    send_data data, :type => 'application/json; header=present', :disposition => "attachment; filename=data.json"
-  end
-
   def upload
     if params[:file] != nil
       rowarray = Array.new
@@ -77,6 +33,57 @@ class WeatherController < ApplicationController
   def split_query(query)
     query.split
   end
+  
+  def get_common_types(words)
+    words.map(&:downcase) & ['line', 'scatter', 'bar']
+  end
+  
+  def get_common_cols(words, labels)
+    words.map(&:downcase) & labels.map(&:downcase)
+  end
+  
+  def col_check_error(common_cols)
+    if common_cols.length < 2
+      'Could not find two data columns in your query'
+    else
+      nil
+    end
+  end
+  
+  def type_check_error(common_types)
+    if common_types.length < 1
+      'Could not find chart type in your query'
+    else
+      nil
+    end
+  end
+  
+  def arrange_plot(common_cols, common_types)
+    return common_cols[0], common_cols[1], common_types[0]
+  end
+  
+  def draw_plot(data1, data2, col1, col2, plot_type)
+    if plot_type == 'line'
+      data1 = data1.map(&:to_f)
+      data2 = data2.map(&:to_f)
+      chart_data = {
+        col1 => data1,
+        col2 => data2,
+      }.to_json
+      n = data1.length
+      chart_labels = (1..n).to_a
+    elsif plot_type == 'bar'
+      joint = data1.zip(data2)
+      chart_data = Hash[joint].to_json
+    else        
+      joint = data1.zip(data2) 
+      chart_data = joint.map{ |x,y| {'x': x, 'y': y}}.to_json
+    end
+    # puts @chart_data
+    # puts @chart_labels
+    # puts @plot_type
+    return chart_data, chart_labels
+  end
 
   def plot(*args)
     data = @@imported_data
@@ -87,26 +94,19 @@ class WeatherController < ApplicationController
     if request.post?
       if request.POST["query"] != nil
         # type 2 - where the user writes queries
-        query = request.POST["query"]
-        words = split_query(query)
+        words = split_query(request.POST["query"])
         
         # find common words b/t query and data columns
-        common_cols = words & @labels
+        common_cols = get_common_cols(words, @labels)
+        
+        @error = col_check_error(common_cols)
 
-        if common_cols.length < 2
-          @error = 'Could not find two data columns in your query'
-        end
+        common_types = get_common_types(words)
 
-        common_types = words & ['line', 'scatter', 'bar']
-
-        if common_cols.length < 1
-          @error = 'Could not find chart type in your query'
-        end
+        @error = type_check_error(common_types)
 
         if !@error
-          @col1 = common_cols[0]
-          @col2 = common_cols[1]
-          @plot_type = common_types[0]
+          @col1, @col2, @plot_type = arrange_plot(common_cols, common_types)
         end
       else
         # type 1 - where the user selects columns
@@ -121,69 +121,8 @@ class WeatherController < ApplicationController
         # convert to x,y format
         data1 = data[@col1]
         data2 = data[@col2]
-
-        if @plot_type == 'line'
-          data1 = data1.map(&:to_f)
-          data2 = data2.map(&:to_f)
-          @chart_data = {
-            @col1 => data1,
-            @col2 => data2,
-          }.to_json
-          n = data1.length
-          @chart_labels = (1..n).to_a
-        elsif @plot_type == 'bar'
-          joint = data1.zip(data2)
-          @chart_data = Hash[joint].to_json
-        else        
-          joint = data1.zip(data2) 
-          @chart_data = joint.map{ |x,y| {'x': x, 'y': y}}.to_json
-        end
-        # puts @chart_data
-        # puts @chart_labels
-        # puts @plot_type
+        @chart_data, @chart_labels = draw_plot(data1, data2, @col1, @col2, @plot_type)
       end
-    end
-  end
-  
-  @@api_key = "ade2a800bae9976517a8880b320bab8c"
-  @@base_url = "http://api.openweathermap.org/data/2.5/weather?"
-  
-  def get_current_weather(city_name)
-    complete_url = @@base_url + "&q=" + city_name + "&appid=" + @@api_key + "&q=" + city_name
-    url = URI.parse(complete_url)
-    req = Net::HTTP::Get.new(url.to_s)
-    res = Net::HTTP.start(url.host, url.port) {|http|
-      http.request(req)
-    }
-    x = JSON.parse(res.body)
-    if x["cod"] != "404"
-      y = x["main"]
-      ret = {}
-      ret["current_temperature"] = (y["temp"] - 273.15).round(2)
-      ret["current_pressure"] = y["pressure"].round(2)
-      ret["current_humidity"] = y["humidity"].round(2)
-      ret["description"] = x["weather"][0]["description"]
-      return ret
-    else
-      return nil
-    end
-  end 
-
-  def get_forecast(city_name) 
-    complete_url = 'http://api.openweathermap.org/data/2.5/forecast?appid=' + @@api_key + "&q=" + city_name + '&units=metric'
-    url = URI.parse(complete_url)
-    req = Net::HTTP::Get.new(url.to_s)
-    res = Net::HTTP.start(url.host, url.port) {|http|
-      http.request(req)
-    }
-    x = JSON.parse(res.body)
-    if x['cod'] == '200'
-        l = x['list']
-        temp = l.map { |y| y['main']['temp'] }
-        time = l.map { |y| y['dt_txt']       }
-        return temp, time
-    else
-        return nil
     end
   end
 end

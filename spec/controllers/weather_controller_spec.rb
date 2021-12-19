@@ -21,23 +21,66 @@ RSpec.describe WeatherController, type: :controller do
   before :each do
     @file = File.join(__dir__, "files/data.csv")
   end
-  describe "Getting Current Weather" do
-    it "success case" do
-      expect(WeatherController.new.get_current_weather('London')).to include("current_humidity")
-      expect(WeatherController.new.get_current_weather('London')).to include("current_pressure")
-      expect(WeatherController.new.get_current_weather('London')).to include("current_temperature")
-      expect(WeatherController.new.get_current_weather('London')).to include("description")
+  describe "Draw plot" do
+    it "scatter plot" do 
+      expect(WeatherController.new.draw_plot(Array[1, 2, 3], Array[1, 2, 3], "x", "y", "scatter")).to eq(
+        Array["[{\"x\":1,\"y\":1},{\"x\":2,\"y\":2},{\"x\":3,\"y\":3}]", nil]
+      )
     end
-    it "failure case" do
-      expect(WeatherController.new.get_current_weather('random (not a city name)')).to eq(nil)
+    it "bar plot" do 
+      expect(WeatherController.new.draw_plot(Array[1, 2, 3], Array[1, 2, 3], "x", "y", "bar")).to eq(
+        Array["{\"1\":1,\"2\":2,\"3\":3}", nil]
+      )
+    end
+    it "line plot" do 
+      expect(WeatherController.new.draw_plot(Array[1, 2, 3], Array[1, 2, 3], "x", "y", "line")).to eq(
+        Array["{\"x\":[1.0,2.0,3.0],\"y\":[1.0,2.0,3.0]}", [1, 2, 3]]
+      )
     end
   end
-  describe "Getting Forecast" do
-    it "success case" do
-      expect(WeatherController.new.get_forecast('London')).to be_a_kind_of(Array)
+  describe "Arrange plot" do
+    it "success case" do 
+      expect(WeatherController.new.arrange_plot(Array["x", "y"], Array["scatter"])).to eq(
+        Array["x", "y", "scatter"]
+      )
     end
-    it "failure case" do
-      expect(WeatherController.new.get_forecast('random (not a city name)')).to eq(nil)
+  end
+  describe "Get Query Plot Type for Visualization" do
+    it "error case" do 
+      expect(WeatherController.new.type_check_error(Array[])).to eq(
+        'Could not find chart type in your query'
+      )
+    end
+    it "success case" do 
+      expect(WeatherController.new.type_check_error(Array["scatter"])).to eq(
+        nil
+      )
+    end
+  end
+  describe "Get Query Columns for Visualization" do
+    it "error case" do 
+      expect(WeatherController.new.col_check_error(Array["X"])).to eq(
+        'Could not find two data columns in your query'
+      )
+    end
+    it "success case" do 
+      expect(WeatherController.new.col_check_error(Array["X", "Y"])).to eq(
+        nil
+      )
+    end
+  end
+  describe "Get Query Columns for Visualization" do
+    it "success case" do 
+      expect(WeatherController.new.get_common_cols(Array["scatter", "plot", "of", "columns", "X", "and", "Y"], Array["X", "Y"])).to eq(
+        Array["x", "y"]
+      )
+    end
+  end
+  describe "Get Query Visualizations" do
+    it "success case" do 
+      expect(WeatherController.new.get_common_types(Array["scatter", "plot", "of", "columns", "X", "and", "Y"])).to eq(
+        Array["scatter"]
+      )
     end
   end
   describe "Uploading Data" do
@@ -48,28 +91,9 @@ RSpec.describe WeatherController, type: :controller do
       )
     end
   end
-  describe "Filtering Data" do
-    it "failure case" do 
-      expect(WeatherController.new.filter_city("not a city name")).to eq(
-        "invalid city name"
-      )
-    end
-  end
-  describe "Filtering Forecast" do
-    it "success case" do 
-      expect(WeatherController.new.filter_forecast("London")).to include(
-        "2021"
-      )
-    end
-    it "failure case" do 
-      expect(WeatherController.new.filter_forecast("not a city name")).to eq(
-        "Error fetching forecast"
-      )
-    end
-  end
   describe "Splitting Query" do
     it "success case" do 
-      expect(WeatherController.new.split_query("Scatter plot of columns X and Y")).to include(
+      expect(WeatherController.new.split_query("Scatter plot of columns X and Y")).to eq(
         Array["Scatter", "plot", "of", "columns", "X", "and", "Y"]
       )
     end
