@@ -37,7 +37,7 @@ bundle exec rspec
 ## Heroku 
 - Deploy from any branch using `git push heroku <branch>: master`
 - The app is live at https://blooming-caverns-07190.herokuapp.com
-- Note: sometimes, we experience a delay in the display of the map plots (in that case, a page refresh will help)
+- Note: sometimes, we experience a delay in the display of some visualizations (in that case, a page refresh will help)
 
 ## GitHub Link
 https://github.com/pdp2121/VISaaS/tree/map_plots
